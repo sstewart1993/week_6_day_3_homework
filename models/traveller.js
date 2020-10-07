@@ -29,13 +29,29 @@ Traveller.prototype.getJourneysByMinDistance = function (minDistance) {
  
 };
 
-Traveller.prototype.calculateTotalDistanceTravelled = function () {
-  return this.journeys.map((total, journey) => {
-    return total += journey.distance
+Traveller.prototype.distances = function(){
+  return this.journeys.map((journey) => {
+    return journey.distance
   })
+}
+
+Traveller.prototype.calculateTotalDistanceTravelled = function () {
+  const distances = this.distances()
+  const total = distances.reduce((accumulator, distance) => {
+    return (accumulator + distance)
+  })
+  return total
 };
 
+// Traveller.prototype.vehicles = function(){
+//   return this.journeys.set((journey) => {
+//   return journey.transport
+//   })
+// }
+
 // Traveller.prototype.getUniqueModesOfTransport = function () {
+//   const newVehicles = Set[this.vehicles()]
+//   return newVehicles
 
 // };
 
